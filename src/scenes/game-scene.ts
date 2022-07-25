@@ -256,7 +256,14 @@ export class GameScene extends Phaser.Scene {
         if (this.tileGrid[y][x] === undefined) {
           //Found a blank spot so lets add animate a tile there
           let tile = this.addTile(x, y);
-
+          tile.setAlpha(0);
+          this.tweens.add({
+            targets: tile,
+            duration: 300,
+            alpha: 1,
+            loop: false,
+            yoyo: false
+          });
           //And also update our "theoretical" grid
           this.tileGrid[y][x] = tile;
         }
